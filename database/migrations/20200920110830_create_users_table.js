@@ -6,8 +6,9 @@ exports.up = function(knex) {
         table.string('last_name');
         table.string('email');
         table.string('password');
-        table.string('role');
-        table.integer('status').defaultTo('1');;
+        table.string('role').defaultTo('user');;
+        table.integer('status').defaultTo('1');
+        table.integer('is_delete').defaultTo('0');
         table.timestamps(false, true);
   });
 };
