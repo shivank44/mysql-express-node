@@ -17,7 +17,7 @@ exports.up = function(knex) {
         table.decimal('mrp', 10, 2).notNullable().defaultTo(0.00);
         table.decimal('rate', 10, 2).notNullable().defaultTo(0.00);
         table.integer('quantity').notNullable().defaultTo(0);
-        table.integer('order_product_status').defaultTo('1');
+        table.integer('order_product_status').defaultTo('1').comment("1=>Active,2=>Cancel");
         table.integer('is_delete').defaultTo('0');
         table.timestamps(false, true);
   });
