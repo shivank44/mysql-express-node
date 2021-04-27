@@ -7,11 +7,11 @@ const product = schema({
     },
     mrp: {
         required: true,
-        type: String
+        type: Number
     },
     rate: {
         required: true,
-        type: String
+        type: Number
     },
     description: {
         required: false,
