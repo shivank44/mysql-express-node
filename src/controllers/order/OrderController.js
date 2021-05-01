@@ -24,7 +24,7 @@ const add = async (req,res) => {
 const getAll = async (req,res) => {
   try{
         const orders = await Order.query().select('*')
-        .eager('[user,orderProducts.[product]]')
+        .withGraphFetched('[user,orderProducts.[product]]')
         .where('is_delete','0');
 
         if(!orders[0]){
@@ -48,7 +48,7 @@ const getOne = async (req,res) => {
     try{
             let id = req.params.id;
           const order = await Order.query().select('*')
-                                              .eager('[user,orderProducts.[product]]')
+                                              .withGraphFetched('[user,orderProducts.[product]]')
                                               .where('is_delete','0')
                                               .where('id',id);
           if(!order[0]){

@@ -24,8 +24,8 @@ const add = async (req,res) => {
 const getAll = async (req,res) => {
   try{
         const categories = await Category.query().select('*')
-        .eager('[parentCategory]')
-        .modifyEager('parentCategory',(builder) => { builder.select('id','name') })
+        .withGraphFetched('[parentCategory]')
+        .modifyGraph('parentCategory',(builder) => { builder.select('id','name') })
         .where('is_delete','0');
 
         if(!categories[0]){
@@ -49,8 +49,8 @@ const getOne = async (req,res) => {
     try{
             let id = req.params.id;
           const category = await Category.query().select('*')
-                                                .eager('[parentCategory]')
-                                                .modifyEager('parentCategory',(builder) => { builder.select('id','name') })
+                                                .withGraphFetched('[parentCategory]')
+                                                .modifyGraph('parentCategory',(builder) => { builder.select('id','name') })
                                                 .where('is_delete','0')
                                                 .where('id',id);
           if(!category[0]){

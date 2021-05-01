@@ -24,8 +24,8 @@ const add = async (req,res) => {
 const getAll = async (req,res) => {
   try{
         const products = await Product.query().select('*')
-        .eager('[subCategory]')
-        .modifyEager('subCategory',(builder) => { builder.select('id','name') })
+        .withGraphFetched('[subCategory]')
+        .modifyGraph('subCategory',(builder) => { builder.select('id','name') })
         .where('is_delete','0');
 
         if(!products[0]){
@@ -49,8 +49,8 @@ const getOne = async (req,res) => {
     try{
             let id = req.params.id;
           const product = await Product.query().select('*')
-                                                .eager('[subCategory]')
-                                                .modifyEager('subCategory',(builder) => { builder.select('id','name') })
+                                                .withGraphFetched('[subCategory]')
+                                                .modifyGraph('subCategory',(builder) => { builder.select('id','name') })
                                                 .where('is_delete','0')
                                                 .where('id',id);
           if(!product[0]){
