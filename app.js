@@ -5,7 +5,7 @@ const Knex = require('knex');
 
 const app = express();
 
-require('dotenv/config');
+require('dotenv').config({ path: '.env' });
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -36,5 +36,5 @@ app.use(function(err, req, res, next) {
   });
 
 //start the server
-const port = process.env.NODE_ENV || process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 app.listen(port,() => { console.log(`App listen on port ${port}`)});
