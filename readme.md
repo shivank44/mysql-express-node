@@ -2,9 +2,9 @@
 
 Clone Repository 
 Rename .env.example to .env
-Change in knexfile_example.js to knexfile.js and replace MySql credentials with your credentials
+Add MySql credentials with your credentials in .env
 
 Run the batch of commands
 - npm install
-- knex migrate:latest
-- knex seed:run
+- npx knex migrate:latest
+- npx knex seed:run

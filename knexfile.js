@@ -1,15 +1,16 @@
 // Update with your config settings.
 const path = require('path');
+require('dotenv').config({ path: '.env' });
 
 module.exports = {
 
-    development: {
+    [process.env.NODE_ENV || 'development']: {
       client: 'mysql2',
       connection: {
-        host : '127.0.0.1',
-        user : 'your_databse_username',
-        password : 'your_databse_password',
-        database : 'your_databse_name',
+        host : process.env.DB_HOST,
+        user : process.env.DB_USERNAME,
+        password : process.env.DB_PASSWORD,
+        database : process.env.DB_DATABASE,
         charset: 'utf8'
       },
       migrations: {

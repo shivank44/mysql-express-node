@@ -37,7 +37,9 @@ const userRegister = schema({
     },
     role: {
         type: String,
-        required: true
+        required: true,
+        enum: ['superadmin', 'admin', 'user'],
+        default: 'user'
     }
 });
 
