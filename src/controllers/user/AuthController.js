@@ -52,7 +52,7 @@ const login = async (req,res) => {
 
       let token = await user.getJWT();
 
-      return res.status(201).json({
+      return res.status(200).json({
         result : user,
         token : token,
         message : "User login successfully"
